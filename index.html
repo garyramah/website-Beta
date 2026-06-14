@@ -3,85 +3,778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>California Time</title>
+    <title>Meibutsu House Pasadena - Artisanal Citrus Yuzu & Rose Wagashi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display for high-end editorial feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for elegant icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF9F6; /* Soft premium cream */
+            color: #1F2421; /* Charcoal off-black */
         }
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        .serif-title {
+            font-family: 'Playfair Display', serif;
         }
-        h1 {
-            color: white;
-            font-size: 2.5em;
-            margin: 0 0 20px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        /* Custom scrollbar to keep layout premium */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .time-display {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 3em;
-            font-weight: bold;
-            color: #667eea;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            min-width: 400px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        ::-webkit-scrollbar-track {
+            background: #FAF9F6;
         }
-        .date-display {
-            color: white;
-            font-size: 1.2em;
-            margin-top: 20px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        /* Indigo wave background gradient approximation */
+        .indigo-wave {
+            background-color: #101B37;
+            background-image: radial-gradient(#1E3A8A 1px, transparent 1px), radial-gradient(#1E3A8A 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>California Time</h1>
-        <div class="time-display" id="time">--:--:--</div>
-        <div class="date-display" id="date"></div>
+<body class="antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="indigo-wave text-amber-200 text-xs tracking-widest text-center py-2.5 px-4 font-semibold uppercase relative z-50">
+        <i class="fa-solid fa-sparkles mr-2 animate-pulse"></i>
+        Limited Holiday Pilot: Only 500 Hand-Sculpted Boxes Available
+        <i class="fa-solid fa-sparkles ml-2 animate-pulse"></i>
     </div>
 
+    <!-- Navigation Header -->
+    <header class="sticky top-0 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-stone-200/80 z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-amber-500 font-bold text-2xl tracking-tighter serif-title">M</span>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold tracking-wider uppercase text-slate-900 font-sans leading-none">Meibutsu House</span>
+                    <span class="text-[10px] tracking-[0.25em] text-stone-500 uppercase font-semibold leading-normal">Pasadena</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600 tracking-wide">
+                <a href="#about" class="hover:text-amber-600 transition-colors">Our Story</a>
+                <a href="#menu" class="hover:text-amber-600 transition-colors">The Confections</a>
+                <a href="#how-it-works" class="hover:text-amber-600 transition-colors">Zero-Shipping Concept</a>
+                <a href="#ingredients" class="hover:text-amber-600 transition-colors">Artisanal Sourcing</a>
+            </nav>
+
+            <div>
+                <a href="#preorder" class="bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm hover:bg-amber-400 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Reserve a Box
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-8 pb-16 lg:py-24 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left: Content -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full text-xs text-amber-700 font-bold tracking-wider uppercase">
+                        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping"></span>
+                        <span>Crafted in Pasadena</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none text-slate-950 serif-title">
+                        Edible Art <br>
+                        <span class="text-amber-600 italic">Freshly Drop-Released</span>
+                    </h1>
+                    <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+                        Say goodbye to stale, frozen-shipped cargo. We craft exquisite Japanese Wagashi right here in Southern California, packed in luxury indigo wave boxes and delivered beautifully fresh.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#preorder" class="bg-[#101B37] text-amber-100 font-bold px-8 py-4 rounded-xl text-center hover:bg-slate-900 transition-all shadow-xl">
+                            Reserve 4-Pack Box — $45
+                        </a>
+                        <a href="#menu" class="border border-stone-300 hover:border-amber-500 text-stone-700 hover:text-amber-600 font-semibold px-8 py-4 rounded-xl text-center transition-all">
+                            View Seasonal Menu
+                        </a>
+                    </div>
+
+                    <!-- Quick stats / trust signals -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200">
+                        <div>
+                            <span class="block text-2xl font-bold text-slate-950 serif-title">500</span>
+                            <span class="text-xs text-stone-500">Total Boxes Baked</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-slate-950 serif-title">100%</span>
+                            <span class="text-xs text-stone-500">Natural Ingredients</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-slate-950 serif-title">$45</span>
+                            <span class="text-xs text-stone-500">All-Inclusive Price</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Image Showcase -->
+                <div class="lg:col-span-7">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-100 bg-[#101B37] min-h-[350px] flex items-center justify-center">
+                        <img 
+                            src="watermarked_img_15422911109792147846.png" 
+                            onerror="handleImageError(this, 'hero')"
+                            alt="Meibutsu House Pasadena Citrus Wagashi Box with Rose Bowl postcard" 
+                            class="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-700"
+                        >
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-6 text-white">
+                            <p class="text-xs tracking-wider uppercase font-bold text-amber-300">Limited New Year's Drop</p>
+                            <h3 class="text-lg font-semibold font-serif">Pasadena Citrus Yuzu & Holiday Rose Selection</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works section -->
+    <section id="how-it-works" class="py-16 bg-[#101B37] text-slate-100 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 indigo-wave"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">The Zero-Shipping Revolution</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 serif-title">How We Bypass the "Cold-Chain Tax"</h2>
+                <p class="text-slate-300 mt-4">
+                    Instead of paying $25 for chemical ice packs, insulated styrofoam boxes, and express airplane cargo, we keep it hyper-local. We put all that value right back into the ingredients and experience.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl relative">
+                    <div class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg">1</div>
+                    <div class="text-amber-400 text-3xl mb-4 mt-2"><i class="fa-solid fa-calendar-heart"></i></div>
+                    <h3 class="text-xl font-bold font-serif mb-2">Pre-Order Holiday Drop</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Secure your box online. When the 500-box limit is reached, orders officially close. We then prepare the exact, fresh volume alongside our co-packer partner.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl relative">
+                    <div class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg">2</div>
+                    <div class="text-amber-400 text-3xl mb-4 mt-2"><i class="fa-solid fa-mortar-pestle"></i></div>
+                    <h3 class="text-xl font-bold font-serif mb-2">Artisanal Fresh Prep</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        No deep freezing or preservatives. Our licensed Pasadena-based culinary partners handcraft your fresh wagashi using real yuzu peel, local citrus, and organic rose water.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl relative">
+                    <div class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg">3</div>
+                    <div class="text-amber-400 text-3xl mb-4 mt-2"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                    <h3 class="text-xl font-bold font-serif mb-2">Pick-up Hub or Local Courier</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Pick up your fresh box at our boutique partner hub in Old Pasadena, or have our local courier deliver it directly within our exclusive radius of South SoCal towns.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu / Product Showcase -->
+    <section id="menu" class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-amber-600 text-xs font-bold tracking-widest uppercase">The Winter Box Composition</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 serif-title">Hand-Sculpted Botanical Flavors</h2>
+                <p class="text-stone-600 mt-4">
+                    Each custom hexagonal wave gift box holds 4 substantial, gorgeous wagashi sweets: two flagship Citrus Lemon variants and two seasonal Rose Bowl-inspired blossoms.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Product 1: Citrus Yuzu Lemon -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-stone-200/60 hover:shadow-xl transition-shadow flex flex-col md:flex-row">
+                    <div class="md:w-1/2 relative min-h-[300px] bg-amber-50 flex items-center justify-center overflow-hidden">
+                        <img 
+                            src="watermarked_img_14620169694436594125.png" 
+                            onerror="handleImageError(this, 'citrus')"
+                            alt="Pasadena Citrus Yuzu Wagashi with Lemon slice detail" 
+                            class="absolute inset-0 w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="p-8 md:w-1/2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest uppercase text-amber-600">The Signature Classic</span>
+                            <h3 class="text-2xl font-bold mt-2 serif-title">Pasadena Citrus Yuzu</h3>
+                            <p class="text-stone-500 text-sm mt-3 leading-relaxed">
+                                Modeled after Pasadena's sun-ripened winter citrus fruits. Features a soft yellow Nerikiri skin dusted with fine starch dew, crowned with a delicate sugar-glazed lemon slice.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="bg-stone-100 text-stone-600 text-[11px] px-2.5 py-1 rounded-full font-medium">Gluten-Free</span>
+                                <span class="bg-stone-100 text-stone-600 text-[11px] px-2.5 py-1 rounded-full font-medium">Vegan Optional</span>
+                                <span class="bg-amber-100 text-amber-700 text-[11px] px-2.5 py-1 rounded-full font-bold">100% Real Yuzu</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100">
+                            <span class="text-xs text-stone-400 block font-semibold uppercase">Tasting Profile</span>
+                            <span class="text-stone-800 text-sm font-semibold">Bright, Zesty Citrus, Sweets of Shiro-An</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Rose Yuzu -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-stone-200/60 hover:shadow-xl transition-shadow flex flex-col md:flex-row">
+                    <div class="md:w-1/2 relative min-h-[300px] bg-rose-50 flex items-center justify-center overflow-hidden">
+                        <img 
+                            src="watermarked_img_17259317543707494137.png" 
+                            onerror="handleImageError(this, 'rose')"
+                            alt="Pasadena Rose Yuzu Wagashi details" 
+                            class="absolute inset-0 w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="p-8 md:w-1/2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest uppercase text-rose-600">Rose Bowl Seasonal</span>
+                            <h3 class="text-2xl font-bold mt-2 serif-title">Rose Yuzu Blossom</h3>
+                            <p class="text-stone-500 text-sm mt-3 leading-relaxed">
+                                Our tribute to Pasadena's iconic Rose Bowl season. Delicately hand-sculpted blush pink rose petals made of smooth sweetened bean paste, hiding an intensely vibrant citrus core within.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="bg-stone-100 text-stone-600 text-[11px] px-2.5 py-1 rounded-full font-medium">Gluten-Free</span>
+                                <span class="bg-rose-50 text-rose-700 text-[11px] px-2.5 py-1 rounded-full font-bold">Organic Rose Water</span>
+                                <span class="bg-stone-100 text-stone-600 text-[11px] px-2.5 py-1 rounded-full font-medium">Natural Beet Coloring</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100">
+                            <span class="text-xs text-stone-400 block font-semibold uppercase">Tasting Profile</span>
+                            <span class="text-stone-800 text-sm font-semibold">Elegant Floral, Zesty Tart Citrus Burst</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sourcing Section -->
+    <section id="ingredients" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left side column block -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-amber-600 text-xs font-bold tracking-widest uppercase">Pure, Clean-Label Confectionery</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-950 serif-title">The Master Ingredient Deck</h2>
+                    <p class="text-stone-600 leading-relaxed">
+                        Traditional wagashi has been celebrated for centuries as a clean, simple, and naturally clean-label luxury. Unlike commercial Western sweets that rely on chemical emulsifiers, we use only time-honored methods.
+                    </p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-amber-500 mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold">Premium Shiro-An (White Bean Paste):</strong>
+                                <span class="text-stone-500 text-sm">Rinsed and pureed butter beans sweetened with organic cane sugar. Smooth, clean, and velvety.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-amber-500 mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold">Gyuhi Paste (Glutinous Rice):</strong>
+                                <span class="text-stone-500 text-sm">Sweet rice flour (mochiko) kneaded until shiny and beautifully translucent, granting elastic pillowy chewiness.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-amber-500 mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold">Steam-Distilled Rose & Local Yuzu:</strong>
+                                <span class="text-stone-500 text-sm">Real zested yuzu grown in Southern California paired with natural organic flower hydrosols.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right side decoration card grid -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                        <span class="text-amber-500 text-2xl"><i class="fa-solid fa-wheat-awn-slash"></i></span>
+                        <h4 class="font-bold text-slate-900 mt-2 serif-title">Naturally Gluten-Free</h4>
+                        <p class="text-stone-500 text-xs mt-1">We utilize 100% pure mochiko sweet rice flour. No gluten stabilizer traces whatsoever.</p>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                        <span class="text-amber-500 text-2xl"><i class="fa-solid fa-seedling"></i></span>
+                        <h4 class="font-bold text-slate-900 mt-2 serif-title">100% Vegan Options</h4>
+                        <p class="text-stone-500 text-xs mt-1">Scent oils emulsified with cold-pressed cocoa butter or organic coconut oil.</p>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                        <span class="text-amber-500 text-2xl"><i class="fa-solid fa-palette"></i></span>
+                        <h4 class="font-bold text-slate-900 mt-2 serif-title">No Artificial Dyes</h4>
+                        <p class="text-stone-500 text-xs mt-1">Beautiful warm gold is achieved with turmeric powder, and soft pink rose using organic beet extracts.</p>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                        <span class="text-amber-500 text-2xl"><i class="fa-solid fa-leaf"></i></span>
+                        <h4 class="font-bold text-slate-900 mt-2 serif-title">Clean Label Guarantee</h4>
+                        <p class="text-stone-500 text-xs mt-1">Zero soy lecithin, seed oils, high fructose corn syrup, or synthetic flavorings.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Reservation Engine -->
+    <section id="preorder" class="py-20 indigo-wave text-slate-100 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+                
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">Secured Reservations Only</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mt-2 serif-title text-white">Reserve Your Holiday Box</h2>
+                    <p class="text-slate-300 text-sm mt-3">
+                        Select your quantity and pickup/delivery options below. Live price calculation includes no hidden shipping fees.
+                    </p>
+                </div>
+
+                <!-- Live Engine Container -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Form Columns -->
+                    <div class="md:col-span-7 space-y-6">
+                        <!-- Step 1: Select Quantity -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Step 1: Choose Quantity</label>
+                            <div class="flex items-center space-x-4 bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                <button type="button" onclick="adjustQty(-1)" class="w-10 h-10 rounded-lg bg-slate-900 hover:bg-slate-800 flex items-center justify-center text-amber-400 font-bold text-lg">−</button>
+                                <span id="box-qty" class="text-lg font-bold text-white flex-1 text-center">1 Box (4 Sweets)</span>
+                                <button type="button" onclick="adjustQty(1)" class="w-10 h-10 rounded-lg bg-slate-900 hover:bg-slate-800 flex items-center justify-center text-amber-400 font-bold text-lg">+</button>
+                            </div>
+                            <span class="text-slate-400 text-xs mt-1 block">Maximum 5 boxes per local reserve to ensure equal neighborhood availability.</span>
+                        </div>
+
+                        <!-- Step 2: Choose Pickup vs Courier -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Step 2: Delivery Method</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Option A -->
+                                <div id="method-pickup" onclick="setMethod('pickup')" class="cursor-pointer bg-slate-950 border-2 border-amber-500 rounded-xl p-4 transition-all hover:border-amber-400">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-bold text-amber-400"><i class="fa-solid fa-store mr-2"></i>Boutique Pickup</span>
+                                        <span class="w-4 h-4 rounded-full border-2 border-amber-500 flex items-center justify-center"><span class="w-2 h-2 bg-amber-500 rounded-full"></span></span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-2 leading-tight">Pick up at Old Pasadena luxury partner hub during a selected window.</p>
+                                    <span class="inline-block mt-3 bg-amber-500/10 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Free Pickup</span>
+                                </div>
+
+                                <!-- Option B -->
+                                <div id="method-courier" onclick="setMethod('courier')" class="cursor-pointer bg-slate-950 border border-slate-800 rounded-xl p-4 transition-all hover:border-amber-400">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-bold text-slate-300"><i class="fa-solid fa-moped mr-2"></i>Local Courier</span>
+                                        <span class="w-4 h-4 rounded-full border-2 border-slate-700"></span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-2 leading-tight">Same-day delivery to Pasadena, San Marino, Glendale, South Pasadena, Arcadia.</p>
+                                    <span class="inline-block mt-3 bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Courier Paid At Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Details -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-slate-300">Step 3: Contact & Reservation Info</label>
+                            <input type="text" id="cust-name" placeholder="Full Name" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors">
+                            <input type="email" id="cust-email" placeholder="Email Address" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors">
+                            <input type="tel" id="cust-phone" placeholder="Phone Number (For pickup notifications)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Live Invoice Right Summary Card -->
+                    <div class="md:col-span-5 bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <h3 class="text-lg font-bold font-serif text-white border-b border-slate-800 pb-3">Your Reservation Summary</h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400" id="inv-desc">Signature Box x 1</span>
+                                <span class="text-white font-semibold" id="inv-item-cost">$45.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Pasadena Processing</span>
+                                <span class="text-emerald-400 font-semibold">Free</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400" id="inv-ship-type">Option A: Boutique Pickup</span>
+                                <span class="text-emerald-400 font-semibold" id="inv-ship-cost">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-800 pt-4 flex justify-between items-baseline">
+                            <span class="text-base font-bold text-white">Total Reserve:</span>
+                            <span class="text-3xl font-extrabold text-amber-400 serif-title" id="inv-total-price">$45.00</span>
+                        </div>
+
+                        <!-- Safety Notification -->
+                        <div class="bg-amber-500/10 border border-amber-500/20 p-3 rounded-xl text-xs text-amber-300 leading-normal">
+                            <i class="fa-solid fa-lock mr-2"></i>No payment is processed today. Simply reserve your spot; you will be notified to confirm and pay during the local drop.
+                        </div>
+
+                        <button type="button" onclick="submitReservation()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
+                            Secure My Box <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Modal Popup for successful reservation -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-stone-200">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold font-serif text-slate-950">Reservation Confirmed!</h3>
+            <p class="text-stone-600 text-sm mt-3 leading-relaxed">
+                Thank you, <span id="modal-cust-name" class="font-bold text-slate-900">Guest</span>. We have locked in your spot for the holiday pilot drop at <span class="font-bold text-amber-600">Pasadena</span>.
+            </p>
+            <button onclick="closeSuccessModal()" class="mt-6 w-full bg-slate-950 hover:bg-stone-800 text-white font-semibold py-3 rounded-xl transition-colors">
+                Back to Storefront
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2 text-white">
+                    <span class="text-amber-500 font-bold text-2xl tracking-tighter serif-title">M</span>
+                    <span class="text-base font-bold uppercase tracking-wider font-sans">Meibutsu House</span>
+                </div>
+                <p class="text-xs text-stone-500">
+                    Artisanal, seasonal botanical confections hand-crafted and drop-delivered within Pasadena and surrounding Southern California neighborhoods.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">Holiday Pick-up Hubs</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><i class="fa-solid fa-map-pin text-amber-500 mr-2"></i>The Green Street Florist — Old Pasadena</li>
+                    <li><i class="fa-solid fa-map-pin text-amber-500 mr-2"></i>Pasadena Rose Garden Hub — Central</li>
+                    <li><i class="fa-solid fa-map-pin text-amber-500 mr-2"></i>Glendale Tea Lounge — Local partner</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">Our Commitment</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><i class="fa-solid fa-heart text-amber-500 mr-2"></i>100% Gluten-free ingredients</li>
+                    <li><i class="fa-solid fa-seedling text-amber-500 mr-2"></i>Plant-based coloring only</li>
+                    <li><i class="fa-solid fa-ban text-amber-500 mr-2"></i>Zero artificial preservatives</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 tracking-wider uppercase text-xs">Legal & Licensing</h4>
+                <p class="text-xs leading-relaxed text-stone-500">
+                    All holiday pilot items are safely prepared in a certified commercial facility under Processed Food Registration protocols in California. All rights reserved &copy; 2026.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-stone-800 text-center text-xs text-stone-600">
+            Meibutsu House Pasadena &bullet; Made in California &bullet; Powered by Shopify
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Engine -->
     <script>
-        function updateTime() {
-            // Create a date object and format it for California timezone (PST/PDT)
-            const now = new Date();
-            const californiaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+        function handleImageError(img, type) {
+            // Prevent infinite loop triggers
+            img.onerror = null;
             
-            // Format time
-            const hours = String(californiaTime.getHours()).padStart(2, '0');
-            const minutes = String(californiaTime.getMinutes()).padStart(2, '0');
-            const seconds = String(californiaTime.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
+            const container = img.parentElement;
+            if (!container) return;
             
-            // Format date
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = californiaTime.toLocaleDateString('en-US', options);
+            let svgContent = '';
             
-            // Update display
-            document.getElementById('time').textContent = timeString;
-            document.getElementById('date').textContent = dateString;
+            if (type === 'hero') {
+                svgContent = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" class="w-full h-auto object-cover max-h-[480px]">
+                    <defs>
+                        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#101B37" />
+                            <stop offset="100%" stop-color="#1E3A8A" />
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F59E0B" />
+                            <stop offset="50%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#9A7B1C" />
+                        </linearGradient>
+                        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.25" />
+                            <stop offset="100%" stop-color="#FBBF24" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#bgGrad)" />
+                    <circle cx="600" cy="337" r="400" fill="url(#sunGlow)" />
+                    
+                    <!-- Decorative Wave Line -->
+                    <path d="M 0 500 C 300 400, 600 600, 1200 450 L 1200 675 L 0 675 Z" fill="#0b1329" opacity="0.6" />
+                    
+                    <!-- Box Presentation -->
+                    <g transform="translate(180, 80)">
+                        <!-- Shadows -->
+                        <rect x="15" y="15" width="840" height="480" rx="28" fill="#020617" opacity="0.6" filter="blur(12px)" />
+                        <!-- Box body -->
+                        <rect x="0" y="0" width="840" height="480" rx="28" fill="#111c3a" stroke="url(#goldGrad)" stroke-width="4" />
+                        
+                        <!-- Window frame -->
+                        <rect x="420" y="40" width="380" height="400" rx="20" fill="#070c1e" stroke="#2a3d6d" stroke-width="2" />
+                        
+                        <!-- 4 confections inside -->
+                        <!-- Top Left (Citrus) -->
+                        <g transform="translate(515, 140)">
+                            <circle cx="0" cy="0" r="50" fill="#fbbf24" stroke="#d97706" stroke-width="2" />
+                            <path d="M -10 -40 Q 15 -65, 35 -45 Q 15 -15, -10 -40" fill="#10b981" />
+                            <ellipse cx="-10" cy="-5" r="18" ry="9" fill="#fef3c7" opacity="0.9" stroke="#b45309" stroke-width="1" />
+                        </g>
+                        <!-- Top Right (Citrus) -->
+                        <g transform="translate(705, 140)">
+                            <circle cx="0" cy="0" r="50" fill="#fbbf24" stroke="#d97706" stroke-width="2" />
+                            <path d="M -10 -40 Q 15 -65, 35 -45 Q 15 -15, -10 -40" fill="#10b981" />
+                            <ellipse cx="-10" cy="-5" r="18" ry="9" fill="#fef3c7" opacity="0.9" stroke="#b45309" stroke-width="1" />
+                        </g>
+                        <!-- Bottom Left (Rose) -->
+                        <g transform="translate(515, 330)">
+                            <circle cx="0" cy="0" r="48" fill="#fda4af" stroke="#f43f5e" stroke-width="1" />
+                            <path d="M-25 -20 Q0 -40, 25 -20 Q40 0, 25 20 Q0 40, -25 20 Z" fill="none" stroke="#e11d48" stroke-width="2.5" />
+                            <circle cx="0" cy="0" r="15" fill="#e11d48" />
+                        </g>
+                        <!-- Bottom Right (Rose) -->
+                        <g transform="translate(705, 330)">
+                            <circle cx="0" cy="0" r="48" fill="#fda4af" stroke="#f43f5e" stroke-width="1" />
+                            <path d="M-25 -20 Q0 -40, 25 -20 Q40 0, 25 20 Q0 40, -25 20 Z" fill="none" stroke="#e11d48" stroke-width="2.5" />
+                            <circle cx="0" cy="0" r="15" fill="#e11d48" />
+                        </g>
+                        
+                        <!-- Left Brand Label plate -->
+                        <rect x="40" y="40" width="340" height="400" rx="16" fill="#faf9f6" />
+                        <rect x="52" y="52" width="316" height="376" rx="12" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+                        
+                        <text x="210" y="130" font-family="'Playfair Display', serif" font-size="36" font-weight="bold" fill="#101b37" text-anchor="middle">Meibutsu</text>
+                        <text x="210" y="175" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" letter-spacing="6" fill="#b45309" text-anchor="middle">PASADENA</text>
+                        <line x1="100" y1="210" x2="320" y2="210" stroke="#e5e5e0" stroke-width="1.5" />
+                        
+                        <text x="210" y="270" font-family="'Playfair Display', serif" font-size="20" font-style="italic" fill="#57534e" text-anchor="middle">Citrus Yuzu & Rose</text>
+                        <text x="210" y="305" font-family="'Playfair Display', serif" font-size="22" font-weight="bold" fill="#1c1917" text-anchor="middle">Wagashi Selection</text>
+                        
+                        <rect x="110" y="340" width="200" height="30" rx="15" fill="#b45309" />
+                        <text x="210" y="359" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" letter-spacing="1" fill="#faf9f6" text-anchor="middle">LIMITED SEASONAL DROP</text>
+                    </g>
+                </svg>
+                `;
+            } else if (type === 'citrus') {
+                svgContent = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class="absolute inset-0 w-full h-full object-cover">
+                    <defs>
+                        <radialGradient id="citrusBg" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fffbeb" />
+                            <stop offset="100%" stop-color="#fef3c7" />
+                        </radialGradient>
+                        <linearGradient id="yuzuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fbbf24" />
+                            <stop offset="100%" stop-color="#d97706" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#citrusBg)" />
+                    <!-- Soft shadow -->
+                    <ellipse cx="300" cy="480" rx="140" ry="18" fill="#78350f" opacity="0.12" />
+                    <!-- Yuzu sphere -->
+                    <circle cx="300" cy="310" r="140" fill="url(#yuzuGrad)" stroke="#b45309" stroke-width="2" />
+                    <!-- Textured ridges -->
+                    <path d="M 190 240 Q 300 180, 410 240" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.5" />
+                    <path d="M 180 320 Q 300 270, 420 320" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.5" />
+                    
+                    <!-- Stem & Leaf -->
+                    <rect x="295" y="130" width="10" height="40" rx="5" fill="#047857" />
+                    <path d="M 300 140 Q 380 50, 450 120 Q 370 175, 300 140" fill="#10b981" stroke="#047857" stroke-width="2" />
+                    
+                    <!-- Glazed Lemon Slice -->
+                    <ellipse cx="300" cy="210" rx="60" ry="25" fill="#fff" stroke="#f59e0b" stroke-width="3" opacity="0.9" />
+                    <ellipse cx="300" cy="210" rx="50" ry="18" fill="#fef3c7" stroke="#fbbf24" stroke-width="1.5" />
+                </svg>
+                `;
+            } else if (type === 'rose') {
+                svgContent = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class="absolute inset-0 w-full h-full object-cover">
+                    <defs>
+                        <radialGradient id="roseBg" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fff1f2" />
+                            <stop offset="100%" stop-color="#ffe4e6" />
+                        </radialGradient>
+                        <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fda4af" />
+                            <stop offset="100%" stop-color="#e11d48" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#roseBg)" />
+                    <!-- Soft shadow -->
+                    <ellipse cx="300" cy="480" rx="140" ry="18" fill="#9f1239" opacity="0.08" />
+                    <!-- Matcha green leaf underneath -->
+                    <path d="M 140 180 Q 220 120, 280 200 Q 220 250, 140 180" fill="#a7f3d0" stroke="#059669" stroke-width="2" />
+                    
+                    <!-- Sculpted rose petals -->
+                    <circle cx="300" cy="310" r="140" fill="url(#roseGrad)" stroke="#be123c" stroke-width="2" />
+                    <path d="M 200 310 C 200 220, 400 220, 400 310 C 400 400, 200 400, 200 310 Z" fill="#fda4af" stroke="#f43f5e" stroke-width="2" opacity="0.9" />
+                    <circle cx="300" cy="310" r="70" fill="#e11d48" stroke="#9f1239" stroke-width="1.5" />
+                    <!-- Swirl -->
+                    <path d="M 300 310 A 30 30 0 0 1 300 260" fill="none" stroke="#fff" stroke-width="3.5" opacity="0.4" stroke-linecap="round" />
+                    <!-- Sparkles/rose-dust dots -->
+                    <circle cx="280" cy="280" r="3" fill="#881337" />
+                    <circle cx="320" cy="270" r="4" fill="#881337" />
+                    <circle cx="330" cy="310" r="3" fill="#be123c" />
+                </svg>
+                `;
+            }
+            
+            // Clean out target image layout & append the beautiful customized inline vector
+            img.style.display = 'none';
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(svgContent.trim(), 'image/svg+xml');
+            const svgElement = doc.documentElement;
+            
+            // Insert vector fallback immediately prior to the hidden image node
+            container.insertBefore(svgElement, img);
         }
-        
-        // Update immediately
-        updateTime();
-        
-        // Update every second
-        setInterval(updateTime, 1000);
+
+        // Storefront Reservation State
+        let currentQty = 1;
+        let selectedMethod = 'pickup'; // 'pickup' or 'courier'
+        const baseBoxPrice = 45.00;
+
+        // Dom Elements references
+        const boxQtyEl = document.getElementById('box-qty');
+        const invDescEl = document.getElementById('inv-desc');
+        const invItemCostEl = document.getElementById('inv-item-cost');
+        const invShipTypeEl = document.getElementById('inv-ship-type');
+        const invShipCostEl = document.getElementById('inv-ship-cost');
+        const invTotalPriceEl = document.getElementById('inv-total-price');
+
+        // Form fields
+        const nameField = document.getElementById('cust-name');
+        const emailField = document.getElementById('cust-email');
+        const phoneField = document.getElementById('cust-phone');
+
+        // Modal references
+        const modalEl = document.getElementById('success-modal');
+        const modalNameEl = document.getElementById('modal-cust-name');
+
+        function adjustQty(amount) {
+            let newQty = currentQty + amount;
+            if (newQty < 1) newQty = 1;
+            if (newQty > 5) newQty = 5; // Cap per family safety limit
+            currentQty = newQty;
+            updateInvoice();
+        }
+
+        function setMethod(method) {
+            selectedMethod = method;
+            
+            // Visual indicators adjustment
+            const pickupCard = document.getElementById('method-pickup');
+            const courierCard = document.getElementById('method-courier');
+            
+            if (method === 'pickup') {
+                pickupCard.className = "cursor-pointer bg-slate-950 border-2 border-amber-500 rounded-xl p-4 transition-all hover:border-amber-400";
+                courierCard.className = "cursor-pointer bg-slate-950 border border-slate-800 rounded-xl p-4 transition-all hover:border-amber-400";
+                
+                // Swap radio state icons
+                pickupCard.querySelector('.rounded-full').innerHTML = '<span class="w-2 h-2 bg-amber-500 rounded-full"></span>';
+                pickupCard.querySelector('.rounded-full').className = "w-4 h-4 rounded-full border-2 border-amber-500 flex items-center justify-center";
+                
+                courierCard.querySelector('.rounded-full').innerHTML = '';
+                courierCard.querySelector('.rounded-full').className = "w-4 h-4 rounded-full border-2 border-slate-700";
+            } else {
+                pickupCard.className = "cursor-pointer bg-slate-950 border border-slate-800 rounded-xl p-4 transition-all hover:border-amber-400";
+                courierCard.className = "cursor-pointer bg-slate-950 border-2 border-amber-500 rounded-xl p-4 transition-all hover:border-amber-400";
+                
+                // Swap radio state icons
+                pickupCard.querySelector('.rounded-full').innerHTML = '';
+                pickupCard.querySelector('.rounded-full').className = "w-4 h-4 rounded-full border-2 border-slate-700";
+                
+                courierCard.querySelector('.rounded-full').innerHTML = '<span class="w-2 h-2 bg-amber-500 rounded-full"></span>';
+                courierCard.querySelector('.rounded-full').className = "w-4 h-4 rounded-full border-2 border-amber-500 flex items-center justify-center";
+            }
+            updateInvoice();
+        }
+
+        function updateInvoice() {
+            // Update quantity display
+            boxQtyEl.textContent = `${currentQty} ${currentQty === 1 ? 'Box' : 'Boxes'} (${currentQty * 4} Sweets)`;
+            
+            // Subtotal
+            const subtotal = currentQty * baseBoxPrice;
+            invDescEl.textContent = `Signature Box x ${currentQty}`;
+            invItemCostEl.textContent = `$${subtotal.toFixed(2)}`;
+
+            // Shipping
+            if (selectedMethod === 'pickup') {
+                invShipTypeEl.textContent = "Option A: Boutique Pickup";
+                invShipCostEl.textContent = "Free";
+                invShipCostEl.className = "text-emerald-400 font-semibold";
+                invTotalPriceEl.textContent = `$${subtotal.toFixed(2)}`;
+            } else {
+                invShipTypeEl.textContent = "Option B: Local Courier";
+                invShipCostEl.textContent = "Paid at Door";
+                invShipCostEl.className = "text-amber-400 font-semibold text-xs uppercase";
+                invTotalPriceEl.textContent = `$${subtotal.toFixed(2)}`;
+            }
+        }
+
+        function submitReservation() {
+            // Basic validation
+            if (!nameField.value.trim() || !emailField.value.trim() || !phoneField.value.trim()) {
+                // Show clean visual message instead of alert()
+                const originalText = document.querySelector('#preorder button').innerHTML;
+                document.querySelector('#preorder button').innerHTML = "<i class='fa-solid fa-exclamation-triangle mr-2'></i> Please fill out all fields";
+                document.querySelector('#preorder button').className = "w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-4 rounded-xl shadow-lg transition-transform";
+                setTimeout(() => {
+                    document.querySelector('#preorder button').innerHTML = originalText;
+                    document.querySelector('#preorder button').className = "w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5";
+                }, 3000);
+                return;
+            }
+
+            // Display custom modal
+            modalNameEl.textContent = nameField.value.trim();
+            modalEl.classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            modalEl.classList.add('hidden');
+            // Reset form fields
+            nameField.value = '';
+            emailField.value = '';
+            phoneField.value = '';
+            currentQty = 1;
+            setMethod('pickup');
+            updateInvoice();
+        }
+
+        // Initialize display
+        updateInvoice();
     </script>
 </body>
 </html>
