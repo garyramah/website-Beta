@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agency Envelope | Bounded Authority for AI Agents</title>
+  <meta name="description" content="Deterministic, context-bound authorization for autonomous AI systems. Decouple probabilistic inference from enterprise execution." />
+  
+  <!-- Inter Font & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              500: '#10b981',
+              600: '#059669',
+              900: '#064e3b',
+              950: '#022c22'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar and subtle glowing gradients */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    .radial-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, rgba(9, 9, 11, 0) 70%);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-500/20 selection:text-emerald-400">
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold font-mono text-base">
+          AE
+        </div>
+        <span class="font-bold tracking-tight text-zinc-100 text-lg">Agency<span class="text-emerald-400">Envelope</span></span>
+        <span class="hidden sm:inline-block text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400 ml-2">
+          Runtime Gateway
+        </span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="#problem" class="hover:text-zinc-200 transition-colors">The Dilemma</a>
+        <a href="#quad-state" class="hover:text-zinc-200 transition-colors">Quad-State Engine</a>
+        <a href="#playground" class="hover:text-zinc-200 transition-colors">Interactive Sandbox</a>
+        <a href="#compliance" class="hover:text-zinc-200 transition-colors">Standards & GRC</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#playground" class="text-xs font-semibold px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-lg shadow-emerald-950/50">
+          Try Sandbox
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative radial-glow pt-24 pb-20 px-6 border-b border-zinc-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-400 text-xs font-mono font-medium mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        RUNTIME AUTHORIZATION FOR AGENTIC AI
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-tight mb-6">
+        Bounded authority for <br class="hidden sm:block"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">AI agents</span>.
+      </h1>
+
+      <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+        Static IAM authenticates identity; it cannot govern probabilistic execution. Agency Envelope intercepts tool invocations at runtime, enforcing deterministic policy, ephemeral task leases, and non-repudiable audit trails.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#playground" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-xl shadow-emerald-950/50 flex items-center justify-center gap-2">
+          <span>Explore Runtime Sandbox</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#architecture" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-zinc-800 hover:bg-zinc-900 text-zinc-300 font-medium text-sm transition-all flex items-center justify-center gap-2">
+          <span>View Architecture Spec</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-zinc-800/80 pt-8 text-left">
+        <div>
+          <div class="text-xs font-mono text-zinc-500 uppercase">Enforcement</div>
+          <div class="text-sm font-semibold text-zinc-200 mt-0.5">Deterministic Sidecar</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono text-zinc-500 uppercase">Policy Latency</div>
+          <div class="text-sm font-semibold text-emerald-400 mt-0.5">&lt; 1.8ms (Rego/Cedar)</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono text-zinc-500 uppercase">Credential Model</div>
+          <div class="text-sm font-semibold text-zinc-200 mt-0.5">JIT Ephemeral Leases</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono text-zinc-500 uppercase">Verification</div>
+          <div class="text-sm font-semibold text-zinc-200 mt-0.5">ECDSA Ledger Records</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement: The Ontological Disconnect -->
+  <section id="problem" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">The Failure of Static IAM</span>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+        Why Prompt Guardrails & API Tokens Collapse
+      </h2>
+      <p class="text-zinc-400 text-sm mt-3">
+        Natural language system prompts reside inside the stochastic inference plane. When models encounter prompt injections, static tokens execute unauthorized mutations without friction.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Unbounded Failure Mode -->
+      <div class="p-6 rounded-2xl bg-zinc-900/40 border border-rose-900/40 relative overflow-hidden">
+        <div class="text-xs font-mono text-rose-400 font-semibold mb-2">CONVENTIONAL STATIC IAM</div>
+        <h3 class="text-lg font-bold text-white mb-2">Ambient Credentials & Inherent Blindness</h3>
+        <p class="text-xs text-zinc-400 mb-6 leading-relaxed">
+          Agents are provisioned long-lived OAuth tokens or service accounts with broad scopes (<code class="text-rose-300">erp:write</code>). When an indirect prompt injection mutates the agent's intent, the downstream API cannot differentiate an adversary from the authorized delegator.
+        </p>
+        <div class="p-4 rounded-xl bg-zinc-950 border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1">
+          <div class="text-rose-400 font-semibold">[Vulnerability Chain]</div>
+          <div>1. Poisoned PDF Ingested &rarr; Interpretive Capture</div>
+          <div>2. Malicious Intent: <span class="text-rose-300">update_bank_details()</span></div>
+          <div>3. Static Gateway: Token Valid (HTTP 200 OK)</div>
+          <div class="text-rose-400">&gt; Catastrophic State Mutation Executed</div>
+        </div>
+      </div>
+
+      <!-- Bounded Enforcement -->
+      <div class="p-6 rounded-2xl bg-zinc-900/40 border border-emerald-900/40 relative overflow-hidden">
+        <div class="text-xs font-mono text-emerald-400 font-semibold mb-2">THE RUNTIME AGENCY ENVELOPE</div>
+        <h3 class="text-lg font-bold text-white mb-2">Decoupled Deterministic Containment</h3>
+        <p class="text-xs text-zinc-400 mb-6 leading-relaxed">
+          Agents never touch raw tokens or external networks. Outbound intents are intercepted by an inline sidecar PEP. Actions are evaluated against task-bound invariants, delegator lineage, and cryptographic time horizons.
+        </p>
+        <div class="p-4 rounded-xl bg-zinc-950 border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1">
+          <div class="text-emerald-400 font-semibold">[Containment Chain]</div>
+          <div>1. Poisoned PDF Ingested &rarr; Interpretive Capture</div>
+          <div>2. Agent Emits Intent Object &rarr; <span class="text-emerald-300">Sidecar Interception</span></div>
+          <div>3. Invariant Evaluation: <span class="text-amber-300">allow_bank_modification: FALSE</span></div>
+          <div class="text-emerald-400">&gt; Dispatched to ESCALATE Quorum; ERP Safe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quad-State Evaluation Engine -->
+  <section id="quad-state" class="py-20 px-6 border-y border-zinc-900 bg-zinc-950/70">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Mathematical Control</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+          The Quad-State Evaluation Engine
+        </h2>
+        <p class="text-zinc-400 text-sm mt-3">
+          Moving beyond brittle binary allow/deny permissions. Graduated consequence management tailored for autonomous workflows.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- ALLOW -->
+        <div class="p-5 rounded-xl border border-emerald-800/40 bg-emerald-950/10">
+          <div class="w-8 h-8 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs mb-3">
+            01
+          </div>
+          <h4 class="text-sm font-bold text-emerald-300 mb-1 font-mono">ALLOW</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Intent satisfies all task capabilities, parameters, and TTL constraints. The sidecar synthesizes a short-lived JIT credential (RFC 9396 RAR) and dispatches execution.
+          </p>
+        </div>
+
+        <!-- CONSTRAIN -->
+        <div class="p-5 rounded-xl border border-amber-800/40 bg-amber-950/10">
+          <div class="w-8 h-8 rounded bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-xs mb-3">
+            02
+          </div>
+          <h4 class="text-sm font-bold text-amber-300 mb-1 font-mono">CONSTRAIN</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Action is valid, but arguments exceed safe boundaries. Gateway rewrites AST parameters on the fly—masking sensitive columns or stripping unauthorized mutation flags.
+          </p>
+        </div>
+
+        <!-- ESCALATE -->
+        <div class="p-5 rounded-xl border border-sky-800/40 bg-sky-950/10">
+          <div class="w-8 h-8 rounded bg-sky-500/20 text-sky-400 flex items-center justify-center font-mono font-bold text-xs mb-3">
+            03
+          </div>
+          <h4 class="text-sm font-bold text-sky-300 mb-1 font-mono">ESCALATE</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Operation exceeds autonomous authority thresholds (e.g., remittance modifications). Thread enters a synchronous pause; approval package is routed to human officers.
+          </p>
+        </div>
+
+        <!-- DENY -->
+        <div class="p-5 rounded-xl border border-rose-800/40 bg-rose-950/10">
+          <div class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-xs mb-3">
+            04
+          </div>
+          <h4 class="text-sm font-bold text-rose-300 mb-1 font-mono">DENY</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Irreconcilable policy violation or unauthorized function call. System fails closed, severs the runtime socket, revokes task envelope, and alerts enterprise SIEM.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sandbox Playground -->
+  <section id="playground" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Live Simulation</span>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+        Runtime Interceptor Playground
+      </h2>
+      <p class="text-zinc-400 text-sm mt-3">
+        Select a real-world scenario to simulate runtime intent interception and verify policy decisions in real time.
+      </p>
+    </div>
+
+    <!-- Playground Box -->
+    <div class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl overflow-hidden font-sans">
+      <!-- Toolbar -->
+      <div class="px-6 py-4 border-b border-zinc-800 bg-zinc-900/60 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="font-mono text-xs font-semibold text-zinc-200">PEP_INSPECTION_MODE: INLINE_AST</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-xs text-zinc-400 font-mono">Scenario:</label>
+          <select id="scenarioSelect" class="bg-zinc-800 text-xs font-mono text-zinc-200 border border-zinc-700 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="escalate">Indirect Injection: Bank Modification [ESCALATE]</option>
+            <option value="constrain">Scope Drift: Data Redaction / Masking [CONSTRAIN]</option>
+            <option value="allow">Nominal Task: Invoice Reconciliation [ALLOW]</option>
+            <option value="deny">Hard Breach: Direct Egress Wire [DENY]</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Editor Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+        <!-- Inputs Column -->
+        <div class="lg:col-span-6 p-5 border-r border-zinc-800 flex flex-col gap-4 bg-zinc-950/70">
+          <div class="flex-1 flex flex-col">
+            <div class="flex justify-between items-center mb-1 text-xs font-mono text-zinc-400">
+              <span>Agent Intent Object (AST)</span>
+              <span class="text-[10px] text-zinc-500">Proposed Tool Call</span>
+            </div>
+            <textarea id="intentEditor" class="w-full flex-1 p-3 bg-zinc-900/90 border border-zinc-800 rounded-lg font-mono text-xs text-emerald-400 focus:outline-none focus:border-zinc-700 resize-none h-44"></textarea>
+          </div>
+
+          <div class="flex-1 flex flex-col">
+            <div class="flex justify-between items-center mb-1 text-xs font-mono text-zinc-400">
+              <span>Active Authority Envelope</span>
+              <span class="text-[10px] text-zinc-500">Contextual Invariants</span>
+            </div>
+            <textarea id="envelopeEditor" class="w-full flex-1 p-3 bg-zinc-900/90 border border-zinc-800 rounded-lg font-mono text-xs text-amber-300 focus:outline-none focus:border-zinc-700 resize-none h-44"></textarea>
+          </div>
+
+          <button id="evalBtn" class="py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs font-mono transition-all flex items-center justify-center gap-2">
+            <span>&gt; Intercept &amp; Evaluate Intent</span>
+          </button>
+        </div>
+
+        <!-- Evaluation Results Column -->
+        <div class="lg:col-span-6 p-6 flex flex-col justify-between bg-zinc-900/20">
+          <div>
+            <!-- Status Badge -->
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-zinc-800/80">
+              <span class="text-xs font-mono text-zinc-500 uppercase">Deterministic PDP Disposition</span>
+              <span id="latencyTag" class="text-xs font-mono text-zinc-400">Latency: 1.14ms</span>
+            </div>
+
+            <div id="dispositionCard" class="p-4 rounded-xl border border-sky-800 bg-sky-950/30 mb-5">
+              <div class="flex items-center justify-between">
+                <span id="dispositionText" class="text-base font-bold font-mono text-sky-400">DISPOSITION: ESCALATE</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-black/40 border border-sky-700 text-sky-300">INVARIANT TRIPPED</span>
+              </div>
+              <p id="ruleText" class="text-xs font-mono text-zinc-300 mt-2">
+                POL-PROC-FIN-04: Remittance alterations require secondary dual-key approval.
+              </p>
+            </div>
+
+            <!-- Sidecar Runtime Actions -->
+            <div class="space-y-3 font-mono text-xs">
+              <div class="text-zinc-400 text-[11px] uppercase tracking-wide">Gateway Action Breakdown:</div>
+              <div id="actionTrace" class="p-3.5 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-300 space-y-2">
+                <div class="text-sky-400 font-semibold">⏸ Synchronous Wait State Active</div>
+                <div>Escalation Ticket: <span class="text-zinc-100">esc_551029</span></div>
+                <div>Assigned Approver: <span class="text-zinc-100">role:senior-procurement-officer</span></div>
+                <div class="text-zinc-500 text-[11px]">ERP Write socket paused; zero egress packets transmitted.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Non-repudiation Artifact Footer -->
+          <div class="pt-4 border-t border-zinc-800/80 font-mono text-[10px] text-zinc-500 flex flex-wrap justify-between items-center gap-2">
+            <div>LEDGER ENTRY: <span id="ledgerId" class="text-zinc-400">led_8830194a-39b1</span></div>
+            <div>SIGNATURE: <span class="text-zinc-400">ecdsa-sha256:30450221...</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Standards & Compliance -->
+  <section id="compliance" class="py-20 px-6 border-t border-zinc-900 bg-zinc-950/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Regulatory Alignment</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+          Statutory AI Governance Built for Audit
+        </h2>
+        <p class="text-zinc-400 text-sm mt-3">
+          Post-hoc log reviews fail statutory standards. The Agency Envelope transforms compliance into pre-flight invariants.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl border border-zinc-800 bg-zinc-900/30">
+          <div class="text-xs font-mono text-emerald-400 mb-1">EU AI ACT</div>
+          <h4 class="text-base font-bold text-white mb-2">Articles 14 &amp; 15 (Oversight &amp; Robustness)</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Satisfies legal requirements for mandatory human-in-the-loop stop mechanisms and technical resilience against adversarial prompt manipulation.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-zinc-800 bg-zinc-900/30">
+          <div class="text-xs font-mono text-emerald-400 mb-1">NIST AI RMF 1.0</div>
+          <h4 class="text-base font-bold text-white mb-2">SP 800-53 AC-6 (Least Privilege)</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Extends zero trust access enforcement from human personnel to non-human machine intelligence via minute-level ephemeral authority leases.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-zinc-800 bg-zinc-900/30">
+          <div class="text-xs font-mono text-emerald-400 mb-1">FINANCIAL REGULATION</div>
+          <h4 class="text-base font-bold text-white mb-2">DORA Algorithmic Resilience</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Guarantees financial institutions maintain deterministic oversight over payment workflows, credit memo generation, and core ledger mutations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-zinc-900 bg-zinc-950 text-xs font-mono text-zinc-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        &copy; 2026 Agency Envelope. All rights reserved. Bounded authority for autonomous AI systems.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#playground" class="hover:text-zinc-300">Sandbox</a>
+        <a href="#problem" class="hover:text-zinc-300">Architecture</a>
+        <a href="#compliance" class="hover:text-zinc-300">Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Playground Simulation Engine JavaScript -->
+  <script>
+    const scenarios = {
+      escalate: {
+        disposition: "ESCALATE",
+        borderClass: "border-sky-800",
+        bgClass: "bg-sky-950/30",
+        textClass: "text-sky-400",
+        badgeBorder: "border-sky-700",
+        badgeText: "text-sky-300",
+        badge: "INVARIANT TRIPPED",
+        rule: "POL-PROC-FIN-04: Remittance alterations require secondary dual-key approval.",
+        actionHtml: `
+          <div class="text-sky-400 font-semibold">⏸ Synchronous Wait State Active</div>
+          <div>Escalation Ticket: <span class="text-zinc-100">esc_551029</span></div>
+          <div>Assigned Approver: <span class="text-zinc-100">role:senior-procurement-officer</span></div>
+          <div class="text-zinc-500 text-[11px]">ERP Write socket paused; zero egress packets transmitted.</div>
+        `,
+        intent: {
+          intent_id: "int_9921_bca4",
+          agent_id: "agent:procurement-processor-v4",
+          proposed_action: "erp.vendor.update",
+          parameters: {
+            vendor_id: "vnd_acme_logistics_441",
+            target_field: "banking_coordinates",
+            routing_number: "021000021",
+            account_number: "9988112233"
+          }
+        },
+        envelope: {
+          envelope_id: "env_task_ap_reconcile_884",
+          authority_delegation: {
+            principal_id: "user:ops-analyst-210",
+            task: "q3_logistics_reconciliation"
+          },
+          capabilities: {
+            allowed_actions: ["erp.vendor.read", "erp.invoice.compare", "erp.ledger.draft"],
+            prohibited_actions: ["erp.vendor.delete", "erp.payment.disburse"]
+          },
+          guardrails: {
+            allow_bank_detail_modification: false,
+            max_financial_limit: 10000
+          }
+        }
+      },
+      constrain: {
+        disposition: "CONSTRAIN",
+        borderClass: "border-amber-800",
+        bgClass: "bg-amber-950/30",
+        textClass: "text-amber-400",
+        badgeBorder: "border-amber-700",
+        badgeText: "text-amber-300",
+        badge: "PAYLOAD SANITIZED",
+        rule: "POL-SEC-MASK-02: Sensitive banking identifiers stripped from basic vendor reads.",
+        actionHtml: `
+          <div class="text-amber-400 font-semibold">⚠ Payload Dynamic AST Rewrite Applied</div>
+          <div class="text-[11px] text-zinc-400">
+            <span class="text-rose-400 line-through">- "include_sensitive_banking": true</span><br>
+            <span class="text-emerald-400">+ "include_sensitive_banking": false (STRIPPED)</span>
+          </div>
+          <div class="text-zinc-500 text-[11px]">Read query dispatched with scoped attributes.</div>
+        `,
+        intent: {
+          intent_id: "int_4412_f012",
+          agent_id: "agent:procurement-processor-v4",
+          proposed_action: "erp.vendor.read",
+          parameters: {
+            vendor_id: "vnd_acme_logistics_441",
+            include_sensitive_banking: true
+          }
+        },
+        envelope: {
+          envelope_id: "env_task_read_vendor_112",
+          authority_delegation: {
+            principal_id: "user:ops-analyst-210",
+            task: "invoice_vendor_lookup"
+          },
+          capabilities: {
+            allowed_actions: ["erp.vendor.read"],
+            prohibited_actions: ["erp.vendor.update"]
+          },
+          guardrails: {
+            allow_bank_detail_modification: false
+          }
+        }
+      },
+      allow: {
+        disposition: "ALLOW",
+        borderClass: "border-emerald-800",
+        bgClass: "bg-emerald-950/30",
+        textClass: "text-emerald-400",
+        badgeBorder: "border-emerald-700",
+        badgeText: "text-emerald-300",
+        badge: "VERIFIED IN-BOUNDS",
+        rule: "POL-CORE-PASS: Proposed action fully subsumed by active task capabilities.",
+        actionHtml: `
+          <div class="text-emerald-400 font-semibold">✓ JIT Credential Synthesized</div>
+          <div>Target API: <span class="text-zinc-100">POST /api/v2/erp/ledger/draft</span></div>
+          <div>TTL Lease: <span class="text-zinc-100">120 seconds (RFC 9396 RAR)</span></div>
+          <div class="text-zinc-500 text-[11px]">Unmodified payload dispatched to enterprise backend.</div>
+        `,
+        intent: {
+          intent_id: "int_1002_a091",
+          agent_id: "agent:procurement-processor-v4",
+          proposed_action: "erp.ledger.draft",
+          parameters: {
+            invoice_id: "inv_2026_0991",
+            allocated_amount: 4250.00
+          }
+        },
+        envelope: {
+          envelope_id: "env_task_draft_clean_991",
+          authority_delegation: {
+            principal_id: "user:ops-analyst-210",
+            task: "invoice_entry"
+          },
+          capabilities: {
+            allowed_actions: ["erp.ledger.draft", "erp.vendor.read"],
+            prohibited_actions: ["erp.ledger.commit"]
+          },
+          guardrails: {
+            max_financial_limit: 10000
+          }
+        }
+      },
+      deny: {
+        disposition: "DENY",
+        borderClass: "border-rose-800",
+        bgClass: "bg-rose-950/30",
+        textClass: "text-rose-400",
+        badgeBorder: "border-rose-700",
+        badgeText: "text-rose-300",
+        badge: "POLICY BREACH",
+        rule: "POL-SEC-ZERO-01: Prohibited action tripped. Out-of-bounds mutation attempt.",
+        actionHtml: `
+          <div class="text-rose-400 font-semibold">✕ Socket Severed & Context Quarantined</div>
+          <div>Network Status: <span class="text-rose-300">BLOCKED (0 packets sent)</span></div>
+          <div>Security Dispatch: <span class="text-zinc-100">SIEM alert SIG-SEC-091</span></div>
+          <div class="text-zinc-500 text-[11px]">Runtime envelope revoked immediately.</div>
+        `,
+        intent: {
+          intent_id: "int_6621_ff99",
+          agent_id: "agent:procurement-processor-v4",
+          proposed_action: "erp.payment.disburse",
+          parameters: {
+            recipient_id: "acc_offshore_bad_actor_99",
+            amount: 250000.00
+          }
+        },
+        envelope: {
+          envelope_id: "env_task_recon_quarantine_01",
+          authority_delegation: {
+            principal_id: "user:ops-analyst-210",
+            task: "invoice_reconciliation"
+          },
+          capabilities: {
+            allowed_actions: ["erp.vendor.read", "erp.invoice.compare"],
+            prohibited_actions: ["erp.payment.disburse"]
+          },
+          guardrails: {
+            max_financial_limit: 5000
+          }
+        }
+      }
+    };
+
+    const intentEditor = document.getElementById("intentEditor");
+    const envelopeEditor = document.getElementById("envelopeEditor");
+    const scenarioSelect = document.getElementById("scenarioSelect");
+    const evalBtn = document.getElementById("evalBtn");
+    const dispositionCard = document.getElementById("dispositionCard");
+    const dispositionText = document.getElementById("dispositionText");
+    const ruleText = document.getElementById("ruleText");
+    const actionTrace = document.getElementById("actionTrace");
+    const latencyTag = document.getElementById("latencyTag");
+    const ledgerId = document.getElementById("ledgerId");
+
+    function loadScenario(key) {
+      const data = scenarios[key];
+      intentEditor.value = JSON.stringify(data.intent, null, 2);
+      envelopeEditor.value = JSON.stringify(data.envelope, null, 2);
+      renderDisposition(data);
+    }
+
+    function renderDisposition(data) {
+      dispositionCard.className = `p-4 rounded-xl border ${data.borderClass} ${data.bgClass} mb-5`;
+      dispositionText.className = `text-base font-bold font-mono ${data.textClass}`;
+      dispositionText.innerText = `DISPOSITION: ${data.disposition}`;
+      ruleText.innerText = data.rule;
+      actionTrace.innerHTML = data.actionHtml;
+      latencyTag.innerText = `Latency: ${(Math.random() * (1.6 - 0.9) + 0.9).toFixed(2)}ms`;
+      ledgerId.innerText = `led_${Math.random().toString(36).substring(2, 10)}`;
+    }
+
+    scenarioSelect.addEventListener("change", (e) => {
+      loadScenario(e.target.value);
+    });
+
+    evalBtn.addEventListener("click", () => {
+      evalBtn.innerText = "Interception in progress...";
+      setTimeout(() => {
+        loadScenario(scenarioSelect.value);
+        evalBtn.innerText = "> Intercept & Evaluate Intent";
+      }, 250);
+    });
+
+    // Initialize first preset
+    loadScenario("escalate");
+  </script>
+</body>
+</html>
