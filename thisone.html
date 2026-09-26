@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentics | Let Agents Work. Keep Authority Over Consequences.</title>
+  <meta name="description" content="Graduated runtime governance for autonomous AI agents. Bounded execution for routine tasks, deterministic controls for bounded changes, and named human decisions when stakes change." />
+
+  <!-- Fonts & Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              900: '#064e3b',
+              950: '#022c22'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    .hero-glow {
+      background: radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.14) 0%, rgba(9, 9, 11, 0) 70%);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-500/20 selection:text-emerald-300">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/85 border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold font-mono text-sm">
+          AG
+        </div>
+        <span class="font-bold tracking-tight text-zinc-100 text-lg">Agentics<span class="text-emerald-400">.</span></span>
+        <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">
+          Governance Architecture
+        </span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="#matrix" class="hover:text-zinc-200 transition-colors">Consequence Matrix</a>
+        <a href="#governance-demo" class="hover:text-zinc-200 transition-colors">Live Lifecycle Demo</a>
+        <a href="#architecture" class="hover:text-zinc-200 transition-colors">Enforcement Flow</a>
+        <a href="#provenance" class="hover:text-zinc-200 transition-colors">Decision Provenance</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#matrix" class="text-xs font-semibold px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md shadow-emerald-950/50">
+          Explore Matrix
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative hero-glow pt-20 pb-16 px-6 border-b border-zinc-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-400 text-xs font-mono font-medium mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        GRADUATED RUNTIME AUTHORITY
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+        Let agents work.<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+          Keep authority over consequences.
+        </span>
+      </h1>
+
+      <p class="text-base sm:text-xl text-zinc-400 max-w-3xl mx-auto font-normal leading-relaxed mb-8">
+        Agentics helps engineering and risk teams define what agents may investigate autonomously, what they may change within tested operational limits, and which actions strictly require a named human decision before execution.
+      </p>
+
+      <div class="inline-block p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-400 mb-8 max-w-2xl">
+        <span class="text-emerald-400 font-semibold font-mono">Graduated Oversight, Not Constant Friction:</span> Oversight should match the blast radius of the action. People do not rubber-stamp routine queries, and agents never bypass high-impact gates.
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#matrix" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2">
+          <span>Inspect Consequence Matrix</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#governance-demo" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-zinc-800 hover:bg-zinc-900 text-zinc-300 font-medium text-sm transition-all flex items-center justify-center gap-2">
+          <span>Watch 4-Stage Lifecycle Demo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Central Product Story: Consequence Matrix Section -->
+  <section id="matrix" class="py-20 px-6 max-w-7xl mx-auto border-b border-zinc-900">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">The Governing Rule</span>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+        Autonomy matched to consequence
+      </h2>
+      <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+        The core question of agent governance is not whether an agent holds an API key, but what operational consequence it threatens. Our runtime divides every proposed intent into three distinct tiers:
+      </p>
+    </div>
+
+    <!-- The 3-Row Matrix Table -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/30 overflow-hidden shadow-2xl">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800 bg-zinc-900/80 text-zinc-400 uppercase text-[11px] tracking-wider">
+              <th class="py-4 px-6 font-semibold w-1/4">Proposed Action</th>
+              <th class="py-4 px-6 font-semibold w-1/4">Default Handling</th>
+              <th class="py-4 px-6 font-semibold w-1/2">What the Operator Sees</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-800/80 text-zinc-300">
+            <!-- Tier 1 -->
+            <tr class="hover:bg-zinc-900/50 transition-colors">
+              <td class="py-5 px-6 font-medium text-white align-top">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-sm font-semibold">Tier 1: Read &amp; Analyze</span>
+                </div>
+                <div class="text-zinc-400 text-xs font-sans">Analyze internal documents, aggregate metrics, query databases.</div>
+              </td>
+              <td class="py-5 px-6 align-top">
+                <span class="inline-block px-2.5 py-1 rounded bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 font-semibold mb-2">
+                  Proceed Autonomous
+                </span>
+                <p class="text-zinc-400 font-sans text-xs">Proceeds under scoped read access, ephemeral tokens, and active telemetry capture.</p>
+              </td>
+              <td class="py-5 px-6 align-top font-sans text-xs">
+                <div class="p-3 rounded-lg bg-zinc-950 border border-zinc-800 space-y-1 font-mono text-[11px]">
+                  <div class="text-emerald-400 font-semibold">Observable Telemetry:</div>
+                  <div class="text-zinc-300">• Live activity trace and token consumption rate</div>
+                  <div class="text-zinc-300">• Exact document/DB provenance &amp; chunk references</div>
+                  <div class="text-zinc-400">• Operator interrupt control (soft cancel / kill thread)</div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Tier 2 -->
+            <tr class="hover:bg-zinc-900/50 transition-colors">
+              <td class="py-5 px-6 font-medium text-white align-top">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <span class="text-sm font-semibold">Tier 2: Bounded Mutation</span>
+                </div>
+                <div class="text-zinc-400 text-xs font-sans">Modify staging configs, draft pull requests, update non-critical records.</div>
+              </td>
+              <td class="py-5 px-6 align-top">
+                <span class="inline-block px-2.5 py-1 rounded bg-amber-950/60 border border-amber-800/60 text-amber-400 font-semibold mb-2">
+                  Proceed if Verified
+                </span>
+                <p class="text-zinc-400 font-sans text-xs">Proceeds only if preauthorized, isolated in sandbox, and rollback-tested prior to execution.</p>
+              </td>
+              <td class="py-5 px-6 align-top font-sans text-xs">
+                <div class="p-3 rounded-lg bg-zinc-950 border border-zinc-800 space-y-1 font-mono text-[11px]">
+                  <div class="text-amber-400 font-semibold">Validation Guardrails:</div>
+                  <div class="text-zinc-300">• Target resource boundary, AST schema limits, and spend caps</div>
+                  <div class="text-zinc-300">• Automated canary run and pre-flight rollback test receipt</div>
+                  <div class="text-zinc-400">• Dynamic stop conditions (aborts on state variance)</div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Tier 3 -->
+            <tr class="hover:bg-zinc-900/50 transition-colors">
+              <td class="py-5 px-6 font-medium text-white align-top">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                  <span class="text-sm font-semibold">Tier 3: High-Impact Execution</span>
+                </div>
+                <div class="text-zinc-400 text-xs font-sans">Production migration, customer batch communication, fund disbursement.</div>
+              </td>
+              <td class="py-5 px-6 align-top">
+                <span class="inline-block px-2.5 py-1 rounded bg-rose-950/60 border border-rose-800/60 text-rose-400 font-semibold mb-2">
+                  Synchronous Pause
+                </span>
+                <p class="text-zinc-400 font-sans text-xs">Mandatory hold for a named human approver or quorum. Zero network mutation without signed token.</p>
+              </td>
+              <td class="py-5 px-6 align-top font-sans text-xs">
+                <div class="p-3 rounded-lg bg-zinc-950 border border-zinc-800 space-y-1 font-mono text-[11px]">
+                  <div class="text-rose-400 font-semibold">Human Decision Dossier:</div>
+                  <div class="text-zinc-300">• Exact targets, serialized argument diff, and financial terms</div>
+                  <div class="text-zinc-300">• Evidentiary chain, missing prerequisites, and risk profile</div>
+                  <div class="text-zinc-400">• Attributable Approve, Reject, or Request Remediation controls</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- The Escalation Invariant Note -->
+    <div class="mt-6 p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex items-start gap-3">
+      <div class="text-emerald-400 text-lg mt-0.5">ℹ</div>
+      <div class="text-xs text-zinc-300 leading-relaxed font-sans">
+        <strong class="text-white font-medium">Reversible does not mean safe.</strong> Actions dynamically escalate to stricter tiers when:
+        <span class="text-emerald-400 font-mono">data classification changes</span> (e.g., encountering PII/secrets),
+        <span class="text-emerald-400 font-mono">privilege escalation is detected</span>,
+        <span class="text-emerald-400 font-mono">model uncertainty rises above threshold</span>, or
+        <span class="text-emerald-400 font-mono">cumulative blast radius</span> exceeds aggregate limits across a multi-step workflow.
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete 4-Stage Governance Decision Demo -->
+  <section id="governance-demo" class="py-20 px-6 max-w-7xl mx-auto border-b border-zinc-900">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Interactive Lifecycle Proof</span>
+      <h2 class="text-3xl font-bold tracking-tight text-white mt-2">
+        A Complete Governance Decision in Action
+      </h2>
+      <p class="text-zinc-400 text-sm mt-3">
+        See how the Agentics runtime handles a production database migration when validation prerequisites are missing. Step through all four phases from investigation to resolution.
+      </p>
+    </div>
+
+    <!-- Interactive 4-State Machine Container -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl overflow-hidden">
+      <!-- Step Navigator -->
+      <div class="grid grid-cols-2 md:grid-cols-4 border-b border-zinc-800 bg-zinc-900/50 text-xs font-mono">
+        <button id="step-btn-1" onclick="setDemoState(1)" class="py-3 px-4 text-left border-r border-zinc-800 transition-colors flex items-center justify-between bg-zinc-800/70 text-emerald-400 font-semibold">
+          <span>1. Investigate</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        </button>
+        <button id="step-btn-2" onclick="setDemoState(2)" class="py-3 px-4 text-left border-r border-zinc-800 transition-colors flex items-center justify-between text-zinc-400 hover:text-zinc-200">
+          <span>2. Classify</span>
+          <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+        </button>
+        <button id="step-btn-3" onclick="setDemoState(3)" class="py-3 px-4 text-left border-r border-zinc-800 transition-colors flex items-center justify-between text-zinc-400 hover:text-zinc-200">
+          <span>3. Request Authority</span>
+          <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+        </button>
+        <button id="step-btn-4" onclick="setDemoState(4)" class="py-3 px-4 text-left transition-colors flex items-center justify-between text-zinc-400 hover:text-zinc-200">
+          <span>4. Resolve &amp; Record</span>
+          <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+        </button>
+      </div>
+
+      <!-- State Canvas -->
+      <div class="p-6 md:p-8 min-h-[380px] flex flex-col justify-between" id="demo-canvas">
+        <!-- Content injected by JavaScript below -->
+      </div>
+
+      <!-- Canvas Footer -->
+      <div class="px-6 py-3 border-t border-zinc-800 bg-zinc-900/60 flex flex-wrap items-center justify-between text-xs font-mono text-zinc-400">
+        <div>Runtime Environment: <span class="text-zinc-200">Simulated Migration Sandbox v2.4</span></div>
+        <div class="flex items-center gap-2">
+          <span>Advance State:</span>
+          <button onclick="nextDemoState()" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-emerald-400 border border-zinc-700">
+            Next Step &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Grounding & Decision Provenance Section -->
+  <section id="provenance" class="py-20 px-6 max-w-7xl mx-auto border-b border-zinc-900">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-5">
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Grounded Transparency</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+          Decision Provenance and Action Traces
+        </h2>
+        <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+          No system can credibly promise total visibility into every stochastic branch of a large neural network. We don’t claim to expose magical "raw thought processes."
+        </p>
+        <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+          Instead, Agentics captures what is <strong class="text-zinc-200">verifiable and enforceable</strong>: observable inputs, cited source evidence, declarative policy evaluations, named approvals, tool parameter diffs, and cryptographically signed outcome records.
+        </p>
+
+        <div class="mt-6 space-y-3 font-mono text-xs">
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>Deterministic Policy-as-Code (Rego/Cedar)</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>Attributable Human Decisions &amp; Justifications</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>Pre-Execution Parameter Mutation Diffs</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>Immutable Action Registry Commitments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Trace & Record Code Example (Clearly labeled as illustrative) -->
+      <div class="lg:col-span-7">
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden shadow-xl">
+          <div class="px-4 py-2.5 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>action_registry_record.json</span>
+            <span class="text-[10px] uppercase text-zinc-500 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
+              Illustrative Audit Artifact
+            </span>
+          </div>
+          <pre class="p-4 text-xs font-mono text-emerald-400 bg-zinc-950/90 overflow-x-auto leading-relaxed"><code>{
+  "record_id": "act_88412_prod_deploy",
+  "timestamp": "2026-09-26T14:32:00.120Z",
+  "agent_id": "agent:db-migration-lead",
+  "consequence_tier": "TIER_3_HIGH_IMPACT",
+  "escalation_reason": "POL-DEPLOY-001: Missing SOC2 & DR replication certs",
+  "evidence_cited": [
+    "audit_hub/dr_failover_q3.json (FAILED)",
+    "security/soc2_type2_attestation.pdf (EXPIRED)"
+  ],
+  "proposed_action": "rds.cluster.modify_endpoint",
+  "effective_authority_check": "INSUFFICIENT (Aggregate blast radius > $50k/hr)",
+  "resolution": {
+    "action": "REMEDIATION_REQUESTED",
+    "decided_by": "user:ops-lead-sarah.miller@enterprise.corp",
+    "justification": "Block cutover until DR replication testing passes in staging.",
+    "signature": "ecdsa-sha256:4b2190...88e1"
+  },
+  "runtime_outcome": "MUTATION_BLOCKED_ZERO_PACKETS_EMITTED"
+}</code></pre>
+        </div>
+        <p class="text-[11px] font-mono text-zinc-500 mt-2 text-right">
+          * Illustrative schema showing verifiable action lineage and cryptographic sign-off.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Flow: Blast Radius & Cumulative Authority -->
+  <section id="architecture" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Agent Mesh Execution Blueprint</span>
+      <h2 class="text-3xl font-bold tracking-tight text-white mt-2">
+        Enforcing Authority Across the Workflow
+      </h2>
+      <p class="text-zinc-400 text-sm mt-3">
+        Governance cannot evaluate tool calls in isolation. A sequence of individually low-risk actions can accumulate into a devastating organizational blast radius.
+      </p>
+    </div>
+
+    <!-- Step Flow Diagram -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs font-mono">
+      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between">
+        <div>
+          <span class="text-emerald-400 font-bold">01. Intent</span>
+          <h4 class="font-bold text-white text-xs mt-1">Propose Action</h4>
+          <p class="font-sans text-zinc-400 text-[11px] mt-2">Agent synthesizes tool parameters &amp; declares intent object.</p>
+        </div>
+        <div class="text-[10px] text-zinc-500 mt-4 border-t border-zinc-800 pt-2">Zero Network Access</div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between">
+        <div>
+          <span class="text-emerald-400 font-bold">02. Classify</span>
+          <h4 class="font-bold text-white text-xs mt-1">Consequence Check</h4>
+          <p class="font-sans text-zinc-400 text-[11px] mt-2">Policy classifies impact and computes effective cumulative authority.</p>
+        </div>
+        <div class="text-[10px] text-zinc-500 mt-4 border-t border-zinc-800 pt-2">Blast Radius Ingested</div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between">
+        <div>
+          <span class="text-emerald-400 font-bold">03. Delegate</span>
+          <h4 class="font-bold text-white text-xs mt-1">Runtime Safeguards</h4>
+          <p class="font-sans text-zinc-400 text-[11px] mt-2">Sidecar checks delegation chain, rollback readiness, and invariants.</p>
+        </div>
+        <div class="text-[10px] text-zinc-500 mt-4 border-t border-zinc-800 pt-2">&lt; 2ms Policy In-Memory</div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between">
+        <div>
+          <span class="text-emerald-400 font-bold">04. Gate</span>
+          <h4 class="font-bold text-white text-xs mt-1">Human Decision</h4>
+          <p class="font-sans text-zinc-400 text-[11px] mt-2">If consequence is high, thread pauses for a named approver sign-off.</p>
+        </div>
+        <div class="text-[10px] text-zinc-500 mt-4 border-t border-zinc-800 pt-2">Named Attribution</div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between">
+        <div>
+          <span class="text-emerald-400 font-bold">05. Ledger</span>
+          <h4 class="font-bold text-white text-xs mt-1">Record Outcome</h4>
+          <p class="font-sans text-zinc-400 text-[11px] mt-2">Protected executor fires; signed outcome enters immutable registry.</p>
+        </div>
+        <div class="text-[10px] text-zinc-500 mt-4 border-t border-zinc-800 pt-2">EU AI Act / SOC2 Proof</div>
+      </div>
+    </div>
+
+    <!-- Aggregate Blast Radius Callout -->
+    <div class="mt-8 p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            Cumulative Blast Radius &amp; Swarm Authority Accumulation
+          </h3>
+          <p class="text-xs text-zinc-400 mt-1 max-w-2xl font-sans leading-relaxed">
+            Design Direction: Rather than evaluating isolated API calls, Agentics monitors the trajectory of the swarm. If ten sub-agents each execute small, permitted database modifications that cumulatively threaten critical system stability, the runtime dynamically escalates the workflow to Tier 3.
+          </p>
+        </div>
+        <div class="shrink-0 font-mono text-xs px-3 py-1.5 rounded bg-zinc-950 border border-zinc-800 text-cyan-300">
+          Stateful Swarm Invariant
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-zinc-900 bg-zinc-950 text-xs font-mono text-zinc-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        &copy; 2026 Agentics Inc. All rights reserved. Bounded authority for autonomous AI systems.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#matrix" class="hover:text-zinc-300">Consequence Matrix</a>
+        <a href="#governance-demo" class="hover:text-zinc-300">Governance Demo</a>
+        <a href="#architecture" class="hover:text-zinc-300">Architecture</a>
+        <a href="#provenance" class="hover:text-zinc-300">Provenance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for 4-State Governance Lifecycle Demo -->
+  <script>
+    let currentState = 1;
+
+    const demoData = {
+      1: {
+        title: "Stage 1: Investigate (Autonomous Analysis under Scoped Access)",
+        badge: "TIER 1 PROCEEDING",
+        badgeColor: "text-emerald-400 border-emerald-800 bg-emerald-950/40",
+        description: "The autonomous agent analyzes the proposed production migration configuration, queries the staging environment, and verifies all compliance dependencies.",
+        contentHtml: `
+          <div class="space-y-3 font-mono text-xs">
+            <div class="p-3.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300">
+              <div class="text-emerald-400 font-semibold mb-1">&gt; Agent Execution: Inspecting Target Cluster</div>
+              <div>Target: <span class="text-zinc-100">rds-aurora-postgres-primary.prod</span></div>
+              <div>Audit Results: <span class="text-rose-400 font-bold">2 Missing Certifications Detected</span></div>
+              <div class="text-zinc-400 mt-2 pl-3 border-l-2 border-zinc-700 space-y-1">
+                <div>[!] Missing DR Multi-Region Replication Signoff (Cert #DR-404)</div>
+                <div>[!] Expired SOC2 Type II Audit Attestation for Sub-Processor</div>
+              </div>
+            </div>
+            <div class="text-zinc-400 text-[11px]">
+              Observable State: Agent reading from compliance vault. Read actions permitted under Tier 1.
+            </div>
+          </div>
+        `
+      },
+      2: {
+        title: "Stage 2: Classify (Dynamic Consequence Evaluation)",
+        badge: "ESCALATION: TIER 3 TRIPPED",
+        badgeColor: "text-amber-400 border-amber-800 bg-amber-950/40",
+        description: "The agent proposes the migration cutover command. The runtime sidecar intercepts the intent and classifies the action as high consequence.",
+        contentHtml: `
+          <div class="space-y-3 font-mono text-xs">
+            <div class="p-3.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300">
+              <div class="text-amber-400 font-semibold mb-1">&gt; Runtime Policy Interception: Invariant Evaluation</div>
+              <div>Proposed Action: <code class="text-zinc-100">POST /api/v2/rds/production/cutover</code></div>
+              <div>Blast Radius: <span class="text-rose-400">High Impact (Enterprise Production Database)</span></div>
+              <div class="text-zinc-300 mt-2">
+                Classification Rule: <span class="text-amber-300 font-semibold">POL-PROD-MIGRATE-01</span>
+                <p class="text-zinc-400 text-[11px] mt-0.5">"Production database mutators require zero outstanding compliance gaps. Automatic Tier 3 escalation triggered."</p>
+              </div>
+            </div>
+            <div class="text-zinc-400 text-[11px]">
+              Status: Action cannot proceed autonomously. Execution thread placed in synchronous wait.
+            </div>
+          </div>
+        `
+      },
+      3: {
+        title: "Stage 3: Request Authority (Named Operator Decision Dossier)",
+        badge: "AWAITING HUMAN DECISION",
+        badgeColor: "text-sky-400 border-sky-800 bg-sky-950/40",
+        description: "The runtime packages a structured decision dossier to the authorized engineering lead. The primary recommendation is remediation.",
+        contentHtml: `
+          <div class="space-y-4 font-mono text-xs">
+            <div class="p-4 rounded-xl bg-zinc-900 border border-sky-900/40 text-zinc-300">
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-800">
+                <span class="text-sky-400 font-bold">GOVERNANCE DOSSIER #DOS-9921</span>
+                <span class="text-zinc-400">Assignee: Lead SRE (Sarah Miller)</span>
+              </div>
+              <div class="space-y-1 text-xs">
+                <div>Scope: <span class="text-zinc-100">Production RDS Switchover</span></div>
+                <div>Rollback Readiness: <span class="text-emerald-400">Tested (Canary Snapshot Verified)</span></div>
+                <div>Outstanding Conditions: <span class="text-rose-400">2 Certifications Unverified</span></div>
+              </div>
+
+              <!-- Attributable Controls -->
+              <div class="mt-4 pt-3 border-t border-zinc-800 flex flex-wrap items-center gap-3">
+                <button onclick="resolveAction('remediate')" class="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition-colors shadow">
+                  Request Remediation (Default)
+                </button>
+                <button onclick="resolveAction('override')" class="px-4 py-2 rounded-lg border border-rose-700 hover:bg-rose-950/50 text-rose-300 text-xs transition-colors">
+                  Attributable Override (Requires Reason)
+                </button>
+                <button onclick="resolveAction('reject')" class="px-4 py-2 rounded-lg border border-zinc-700 hover:bg-zinc-800 text-zinc-400 text-xs transition-colors">
+                  Reject Plan
+                </button>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      4: {
+        title: "Stage 4: Resolve & Record (Attributable Action Registry Commitment)",
+        badge: "ACTION RECORDED TO REGISTRY",
+        badgeColor: "text-emerald-400 border-emerald-800 bg-emerald-950/40",
+        description: "The named operator’s decision is cryptographically attested. The execution outcome is committed to the immutable action registry.",
+        contentHtml: `
+          <div class="space-y-3 font-mono text-xs">
+            <div class="p-4 rounded-xl bg-zinc-900 border border-emerald-900/40 text-zinc-300">
+              <div class="text-emerald-400 font-bold mb-2">✓ Resolution Committed: REQUEST_REMEDIATION</div>
+              <div class="space-y-1 text-xs">
+                <div>Decided By: <span class="text-zinc-100">sarah.miller@enterprise.corp (Lead SRE)</span></div>
+                <div>Decision Rationale: <span class="text-amber-300">"Block migration until DR failover test executes in staging."</span></div>
+                <div>Enforcement State: <span class="text-rose-400">Egress Packet Drop (Zero Database Mutations)</span></div>
+                <div>Attestation Hash: <code class="text-zinc-400">ecdsa-sha256:4b2190...88e1</code></div>
+              </div>
+            </div>
+            <div class="text-zinc-400 text-[11px]">
+              Compliance Lineage: Both the agent's proposed intent and the human operator's remediation instruction are permanently committed for audit.
+            </div>
+          </div>
+        `
+      }
+    };
+
+    function setDemoState(stateNum) {
+      currentState = stateNum;
+      const data = demoData[stateNum];
+      const canvas = document.getElementById("demo-canvas");
+
+      // Update Tabs
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`step-btn-${i}`);
+        const dot = btn.querySelector("span:last-child");
+        if (i === stateNum) {
+          btn.className = "py-3 px-4 text-left border-r border-zinc-800 transition-colors flex items-center justify-between bg-zinc-800/70 text-emerald-400 font-semibold";
+          dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+        } else {
+          btn.className = "py-3 px-4 text-left border-r border-zinc-800 transition-colors flex items-center justify-between text-zinc-400 hover:text-zinc-200";
+          dot.className = "w-2 h-2 rounded-full bg-zinc-600";
+        }
+      }
+
+      // Render Canvas Content
+      canvas.innerHTML = `
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <h3 class="text-base font-bold text-white">${data.title}</h3>
+            <span class="text-xs font-mono px-2.5 py-0.5 rounded border ${data.badgeColor}">
+              ${data.badge}
+            </span>
+          </div>
+          <p class="text-xs text-zinc-400 mb-6 font-sans leading-relaxed">${data.description}</p>
+          ${data.contentHtml}
+        </div>
+      `;
+    }
+
+    function nextDemoState() {
+      const next = currentState >= 4 ? 1 : currentState + 1;
+      setDemoState(next);
+    }
+
+    function resolveAction(choice) {
+      setDemoState(4);
+    }
+
+    // Initialize first state on load
+    setDemoState(1);
+  </script>
+</body>
+</html>
